@@ -1,1 +1,1 @@
-# CourseApp
+# CourseApp - Thực hành các công nghệ lập trình hiện đại
