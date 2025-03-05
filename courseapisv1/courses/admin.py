@@ -39,7 +39,8 @@ class MyLessonAdmin(admin.ModelAdmin):
 
     def image_view(self, lesson):
         if lesson:
-            return mark_safe(f"<img src = '/static/{lesson.image.name}' width='120' />")
+            # return mark_safe(f"<img src = '/static/{lesson.image.name}' width='120' />") #local
+            return mark_safe(f"<img src = '{lesson.image.url}' width='120' />")
 
 
 admin_site.register(Category)

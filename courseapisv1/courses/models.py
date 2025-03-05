@@ -1,8 +1,12 @@
+from cloudinary.forms import CloudinaryInput
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
+
 class User(AbstractUser):
-    avatar = models.ImageField(upload_to='users/%y/%m', null=True)
+
+    avatar = CloudinaryField(null=True) #models.ImageField(upload_to='users/%y/%m', null=True)
 
 class BaseModel(models.Model):
     active = models.BooleanField(default=True)
@@ -22,7 +26,7 @@ class Category(BaseModel):
 class Course(BaseModel):
     subject = models.CharField(max_length=255)
     description = models.TextField(null=True)
-    image = models.ImageField(upload_to='courses/%y/%m')
+    image = CloudinaryField(null=True) #models.ImageField(upload_to='courses/%y/%m')
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
 
     class Meta:
@@ -34,7 +38,7 @@ class Course(BaseModel):
 class Lesson(BaseModel):
     subject = models.CharField(max_length=255)
     content = RichTextField()
-    image = models.ImageField(upload_to='courses/%y/%m')
+    image = CloudinaryField(null=True) #models.ImageField(upload_to='courses/%y/%m')
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     tags =models.ManyToManyField('Tag')
 
