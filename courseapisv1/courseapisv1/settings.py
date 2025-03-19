@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rest_framework',
     'drf_yasg',
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('oauth2_provider.contrib.rest_framework.OAuth2Authentication',)
+}
+
+OAUTH2_PROVIDER = { 'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore' }
+
 
 ROOT_URLCONF = 'courseapisv1.urls'
 CKEDITOR_UPLOAD_PATH = "ckeditors/lessons/"
@@ -85,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'coursedb',
         'USER': 'root',
-        'PASSWORD': 'Admin@123',
+        'PASSWORD': 'root',
         'HOST': ''  # mặc định localhost
     }
 }
@@ -159,3 +167,6 @@ print(optimize_url)
 # Transform the image: auto-crop to square aspect_ratio
 auto_crop_url, _ = cloudinary_url("shoes", width=500, height=500, crop="auto", gravity="auto")
 print(auto_crop_url)
+
+CLIENT_ID = '7DSShRdKCdzUsdN2JrfMfwJcaXid9pZNA5LDFfGm'
+CLIENT_SECRET = 'i7O57O5l12LWlrcxsA5NLaNxhORu5PZxVaBmpaCLxI6hWCakFZNEVvFh8Xp30kFEj8xFoMvEvAxqXWuabvCoakTF1Lu74JhlwMfkGH7esxSupf87sJWUkPTQetlU65Zl'
