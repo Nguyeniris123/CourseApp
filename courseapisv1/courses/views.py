@@ -100,6 +100,4 @@ class UserViewSet(viewsets.ViewSet, generics.CreateAPIView, generics.UpdateAPIVi
     def get_current_user(self, request):
         return Response(serializers.UserSerializer(request.user).data)
 
-    @action(methods=['put'], url_path='current-user', detail=False, permission_classes=[permissions.IsAuthenticated])
-    def get_current_user(self, request):
-        return Response(serializers.UserSerializer(request.user).data)
+   
